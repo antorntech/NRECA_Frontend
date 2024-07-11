@@ -23,6 +23,8 @@ const { Column } = Table;
 
 const Leave = () => {
   const [leaves, setLeave] = useState([]);
+
+  // formateDate.map((item) => console.log(item));
   const [loading, setLoading] = useState(false); // State to manage loading state
 
   const getLeave = async () => {
@@ -91,18 +93,6 @@ const Leave = () => {
     });
   };
 
-  let dateProperty = "2024/07/11,2024/07/13";
-
-  // Split the string by comma
-  let dates = dateProperty.split(",");
-
-  // Convert dates to JavaScript Date objects
-  let date1 = new Date(dates[0]);
-  let date2 = new Date(dates[1]);
-
-  // Calculate the difference in days
-  let difference = Math.abs((date2 - date1) / (1000 * 60 * 60 * 24)) + 1; // Adding 1 to include both start and end dates
-
   return (
     <>
       <div>
@@ -133,7 +123,7 @@ const Leave = () => {
           <Loader />
         ) : leaves.length > 0 ? (
           <Table dataSource={leaves}>
-            <Column title="User Id" dataIndex="userId" key="userId" />
+            <Column title="Email" dataIndex="email" key="email" />
             <Column
               title="Category"
               dataIndex="leaveCategory"
@@ -143,7 +133,11 @@ const Leave = () => {
             <Column title="Status" dataIndex="status" key="status" />
             <Column
               title="Days"
-              render={(_, record) => <Space>{difference}</Space>}
+              render={(_, record) => (
+                <Space>
+                  <span>{record.days}</span>
+                </Space>
+              )}
             />
             <Column
               title="Action"
