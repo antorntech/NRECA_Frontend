@@ -17,7 +17,7 @@ const { Content } = Layout;
 const SignIn = () => {
   const onFinish = (values) => {
     if (values) {
-      fetch("http://localhost:5000/api/v1/admin/login", {
+      fetch("http://localhost:5000/api/v1/accounts/login", {
         method: "POST",
         body: JSON.stringify(values),
         headers: {
@@ -39,7 +39,7 @@ const SignIn = () => {
               theme: "light",
             });
             setTimeout(() => {
-              localStorage.setItem("admin", JSON.stringify(data.admin));
+              localStorage.setItem("account", JSON.stringify(data.newaccount));
               localStorage.setItem("token", JSON.stringify(data.token));
               window.location.href = "/";
             }, 1200);
