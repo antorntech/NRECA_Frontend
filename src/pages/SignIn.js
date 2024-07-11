@@ -39,6 +39,7 @@ const SignIn = () => {
               theme: "light",
             });
             setTimeout(() => {
+              localStorage.setItem("admin", JSON.stringify(data.admin));
               localStorage.setItem("token", JSON.stringify(data.token));
               window.location.href = "/";
             }, 1200);

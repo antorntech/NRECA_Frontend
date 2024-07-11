@@ -91,6 +91,18 @@ const Leave = () => {
     });
   };
 
+  let dateProperty = "2024/07/11,2024/07/13";
+
+  // Split the string by comma
+  let dates = dateProperty.split(",");
+
+  // Convert dates to JavaScript Date objects
+  let date1 = new Date(dates[0]);
+  let date2 = new Date(dates[1]);
+
+  // Calculate the difference in days
+  let difference = Math.abs((date2 - date1) / (1000 * 60 * 60 * 24)) + 1; // Adding 1 to include both start and end dates
+
   return (
     <>
       <div>
@@ -110,7 +122,7 @@ const Leave = () => {
           </div>
           <div>
             <Button type="primary" className="primary-btn">
-              <Link to="/add_employee">
+              <Link to="/add_leave">
                 <PlusOutlined style={{ marginRight: "5px" }} />
                 Add Leave
               </Link>
@@ -121,29 +133,17 @@ const Leave = () => {
           <Loader />
         ) : leaves.length > 0 ? (
           <Table dataSource={leaves}>
+            <Column title="User Id" dataIndex="userId" key="userId" />
             <Column
-              title="Avatar"
-              dataIndex="avatar"
-              key="avatar"
-              render={(_, record) => (
-                <img
-                  src={`http://localhost:5000${record.avatar}`}
-                  style={{ width: "50px", height: "50px" }}
-                />
-              )}
+              title="Category"
+              dataIndex="leaveCategory"
+              key="leaveCategory"
             />
-            <Column title="Office ID" dataIndex="officeId" key="officeId" />
-            <Column title="First Name" dataIndex="firstName" key="firstName" />
-            <Column title="Last Name" dataIndex="lastName" key="lastName" />
+            <Column title="Type" dataIndex="leaveType" key="leaveType" />
+            <Column title="Status" dataIndex="status" key="status" />
             <Column
-              title="Designation"
-              dataIndex="designation"
-              key="designation"
-            />
-            <Column
-              title="Office Email"
-              dataIndex="officeEmail"
-              key="officeEmail"
+              title="Days"
+              render={(_, record) => <Space>{difference}</Space>}
             />
             <Column
               title="Action"
@@ -151,12 +151,12 @@ const Leave = () => {
               width="100px"
               render={(_, record) => (
                 <Space size="middle">
-                  <Link to={`/edit_employee/${record._id}`}>
+                  <Link to={`/edit_leave/${record._id}`}>
                     <Button type="primary">
                       <EditOutlined />
                     </Button>
                   </Link>
-                  <Link to={`/view_employee/${record._id}`}>
+                  <Link to={`/view_leave/${record._id}`}>
                     <Button
                       type="primary"
                       style={{

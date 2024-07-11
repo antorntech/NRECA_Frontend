@@ -12,6 +12,7 @@ import AddEmployee from "./pages/AddEmployee";
 import Employee from "./pages/Employee";
 import ViewEmployee from "./pages/ViewEmployee";
 import Leave from "./pages/Leave";
+import AddLeave from "./pages/AddLeave";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("token"));
@@ -30,6 +31,7 @@ function App() {
             />
             <Route exact path="/view_employee/:id" component={ViewEmployee} />
             <Route exact path="/leaves" component={Leave} />
+            <Route exact path="/add_leave" component={AddLeave} />
             <Redirect from="*" to="/dashboard" />
           </Main>
         </Switch>
