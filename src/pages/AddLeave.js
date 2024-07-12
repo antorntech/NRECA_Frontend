@@ -13,24 +13,6 @@ const AddLeave = () => {
   const [date, setDate] = useState("");
   const email = JSON.parse(localStorage.getItem("account")).email;
 
-  const dateRanges = date;
-  console.log(dateRanges);
-  function calculateDays(dateRange) {
-    const [startDateStr, endDateStr] = dateRange.split(",");
-    const startDate = new Date(startDateStr);
-    const endDate = new Date(endDateStr);
-
-    // Calculate the difference in milliseconds
-    const differenceMs = endDate - startDate;
-
-    // Convert milliseconds to days
-    const differenceDays = Math.ceil(differenceMs / (1000 * 60 * 60 * 24));
-
-    return differenceDays;
-  }
-
-  const daysBetweenDates =
-    dateRanges.length > 0 ? dateRanges?.map(calculateDays) : 0;
   const handleUpload = (values) => {
     const formData = new FormData();
 
@@ -39,12 +21,11 @@ const AddLeave = () => {
     formData.append("leaveType", leaveType);
     formData.append("leaveCategory", leaveCategory);
     formData.append("date", date);
-    formData.append("days", daysBetweenDates);
     formData.append("reason", values.reason);
     formData.append("remark", values.remark);
     console.log(formData);
     // You can use any AJAX library you like
-    fetch("http://localhost:5000/api/v1/leave/addLeaves/add", {
+    fetch("http://localhost:5000/api/v1/leave/addLeaves", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,

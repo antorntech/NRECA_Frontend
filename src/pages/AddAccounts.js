@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, message, Row, Col, Select, Input } from "antd";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 
 const AddAccounts = () => {
   const navigate = useHistory();
@@ -26,6 +26,8 @@ const AddAccounts = () => {
           // Reset form
           message.success("Upload Successfully.");
           navigate.push("/accounts");
+        } else if (data.message === "Invalid email address") {
+          message.error("Invalid email address");
         } else if (
           data.message === "Accounts with this username already exists"
         ) {

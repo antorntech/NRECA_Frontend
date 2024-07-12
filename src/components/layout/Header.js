@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
-
+import avatar from "../../assets/images/user.png";
 import {
   Row,
   Col,
-  Breadcrumb,
-  Badge,
-  Dropdown,
   Button,
   List,
   Avatar,
@@ -15,15 +12,6 @@ import {
   Switch,
   Form,
 } from "antd";
-
-import {
-  SearchOutlined,
-  StarOutlined,
-  TwitterOutlined,
-  FacebookFilled,
-} from "@ant-design/icons";
-import styled from "styled-components";
-import { toast } from "react-toastify";
 
 const wifi = [
   <svg
@@ -217,24 +205,6 @@ function Header({
         {setting}
       </div> */}
       <Row gutter={[24, 0]}>
-        {/* <Col span={24} md={6}>
-          <Breadcrumb>
-            <Breadcrumb.Item>
-              <NavLink to="/">Pages</NavLink>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item style={{ textTransform: "capitalize" }}>
-              {name.replace("/", "")}
-            </Breadcrumb.Item>
-          </Breadcrumb>
-          <div className="ant-page-header-heading">
-            <span
-              className="ant-page-header-heading-title"
-              style={{ textTransform: "capitalize" }}
-            >
-              {subName.replace("/", "")}
-            </span>
-          </div>
-        </Col> */}
         <Col span={24} md={24} className="header-control">
           {/* <Button type="link" onClick={showDrawer}>
             {logsetting}
@@ -317,19 +287,20 @@ function Header({
               </div>
             </div>
           </Drawer>
-          <Button
-            onClick={handleLogout}
-            type="primary"
-            className="primary-btn"
-            // style={{ background: "#138551", border: "none", color: "white" }}
-          >
+          <Button onClick={handleLogout} type="primary" className="primary-btn">
             Logout
           </Button>
-          <Input
-            className="header-search"
-            placeholder="Type here..."
-            prefix={<SearchOutlined />}
-          />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "5px",
+              marginRight: "10px",
+            }}
+          >
+            <img src={avatar} alt="profile" width={40} height={40} />
+            <span>{account.role}</span>
+          </div>
         </Col>
       </Row>
     </>
