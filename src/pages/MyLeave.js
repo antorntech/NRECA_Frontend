@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../components/shared/loader/Loader";
+import refreshIcon from "../assets/images/refresh.png";
 
 const { confirm } = Modal;
 const { Column } = Table;
@@ -103,7 +104,18 @@ const MyLeave = () => {
               Leaves are {leaves.length > 0 ? "available." : "not available."}
             </p>
           </div>
-          <div>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <Button
+              onClick={() => getLeave()}
+              className="primary-btn"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <img src={refreshIcon} alt="refresh.png" />
+            </Button>
             <Button type="primary" className="primary-btn">
               <Link to="/add_my_leave">
                 <PlusOutlined style={{ marginRight: "5px" }} />
@@ -162,11 +174,20 @@ const MyLeave = () => {
               width="100px"
               render={(_, record) => (
                 <Space size="middle">
-                  <Link to={`/edit_leave/${record._id}`}>
-                    <Button type="primary">
-                      <EditOutlined />
-                    </Button>
-                  </Link>
+                  {record.status === "approved_by_superadmin" ||
+                  record.status === "approved_by_admin" ? (
+                    <Link to={`/edit_leave/${record._id}`}>
+                      <Button type="primary" disabled>
+                        <EditOutlined />
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Link to={`/edit_leave/${record._id}`}>
+                      <Button type="primary">
+                        <EditOutlined />
+                      </Button>
+                    </Link>
+                  )}
                   <Button type="danger" onClick={() => showConfirm(record._id)}>
                     <DeleteOutlined />
                   </Button>

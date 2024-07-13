@@ -12,7 +12,7 @@ function Footer() {
             © {date}, made with
             {<HeartFilled />} by
             <a href="#pablo" className="font-weight-bold" target="_blank">
-              OCTETIT
+              NRECA
             </a>
             for a better web.
           </div>

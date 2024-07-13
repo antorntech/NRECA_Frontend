@@ -10,7 +10,6 @@ const EditLeave = () => {
   const { id } = useParams();
   const [leaveData, setLeaveData] = useState({});
   const [newDate, setNewDate] = useState("");
-  console.log(newDate);
   const [leaveCategory, setLeaveCategory] = useState("");
   const [leaveType, setLeaveType] = useState("");
   const [status, setStatus] = useState("");
@@ -42,6 +41,7 @@ const EditLeave = () => {
   }, [id, form]);
 
   const handleUpload = (values) => {
+    console.log(values);
     setLoading(true);
     // You can use any AJAX library you like
     fetch(`http://localhost:5000/api/v1/leave/update/${id}`, {
@@ -54,7 +54,6 @@ const EditLeave = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.message === "Leave updated successfully!") {
           // Reset form
           message.success("Upload Successfully.");
