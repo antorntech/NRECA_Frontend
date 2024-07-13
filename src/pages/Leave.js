@@ -23,6 +23,16 @@ const { Column } = Table;
 
 const Leave = () => {
   const [leaves, setLeave] = useState([]);
+  const email = JSON.parse(localStorage.getItem("account")).email;
+  const role = JSON.parse(localStorage.getItem("account")).role;
+
+  // Function to filter leaves by email
+  const filterLeavesByEmail = (leaves, email) => {
+    return leaves.filter((leave) => leave.email === email);
+  };
+
+  // Example: Filter leaves for email
+  const filteredLeaves = filterLeavesByEmail(leaves, email);
 
   // formateDate.map((item) => console.log(item));
   const [loading, setLoading] = useState(false); // State to manage loading state
@@ -121,7 +131,7 @@ const Leave = () => {
         </div>
         {loading ? (
           <Loader />
-        ) : leaves.length > 0 ? (
+        ) : leaves.length > 0 && role === "superadmin" ? (
           <Table dataSource={leaves}>
             <Column title="Email" dataIndex="email" key="email" />
             <Column
@@ -130,7 +140,26 @@ const Leave = () => {
               key="leaveCategory"
             />
             <Column title="Type" dataIndex="leaveType" key="leaveType" />
-            <Column title="Status" dataIndex="status" key="status" />
+            <Column
+              title="Status"
+              render={(_, record) => (
+                <Space>
+                  <span
+                    style={{
+                      fontWeight: "bold",
+                      textTransform: "capitalize",
+                      color: record.status === "Approved" ? "green" : "skyblue",
+                    }}
+                  >
+                    {record.status === "approved_by_superadmin"
+                      ? "Approved By Super Admin"
+                      : record.status === "approved_by_admin"
+                      ? "Approved By Admin"
+                      : "Pending"}
+                  </span>
+                </Space>
+              )}
+            />
             <Column
               title="Days"
               render={(_, record) => (
@@ -150,15 +179,55 @@ const Leave = () => {
                       <EditOutlined />
                     </Button>
                   </Link>
-                  <Link to={`/view_leave/${record._id}`}>
-                    <Button
-                      type="primary"
-                      style={{
-                        backgroundColor: "orange",
-                        border: "1px solid orange",
-                      }}
-                    >
-                      <EyeFilled />
+                  <Button type="danger" onClick={() => showConfirm(record._id)}>
+                    <DeleteOutlined />
+                  </Button>
+                </Space>
+              )}
+            />
+          </Table>
+        ) : leaves.length > 0 ? (
+          <Table dataSource={filteredLeaves}>
+            <Column title="Email" dataIndex="email" key="email" />
+            <Column
+              title="Category"
+              dataIndex="leaveCategory"
+              key="leaveCategory"
+            />
+            <Column title="Type" dataIndex="leaveType" key="leaveType" />
+            <Column
+              title="Status"
+              render={(_, record) => (
+                <Space>
+                  <span
+                    style={{
+                      fontWeight: "bold",
+                      textTransform: "capitalize",
+                      color: record.status === "Approved" ? "green" : "skyblue",
+                    }}
+                  >
+                    {record.status}
+                  </span>
+                </Space>
+              )}
+            />
+            <Column
+              title="Days"
+              render={(_, record) => (
+                <Space>
+                  <span>{record.days}</span>
+                </Space>
+              )}
+            />
+            <Column
+              title="Action"
+              key="action"
+              width="100px"
+              render={(_, record) => (
+                <Space size="middle">
+                  <Link to={`/edit_leave/${record._id}`}>
+                    <Button type="primary">
+                      <EditOutlined />
                     </Button>
                   </Link>
                   <Button type="danger" onClick={() => showConfirm(record._id)}>
