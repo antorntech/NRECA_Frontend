@@ -5,8 +5,8 @@ import logo from "../../assets/images/logo.png";
 function Sidenav({ color }) {
   const { pathname } = useLocation();
   const page = pathname.replace("/", "");
-  const superadmin = JSON.parse(localStorage.getItem("account")).role;
-  console.log(superadmin);
+  const role = JSON.parse(localStorage.getItem("account")).role;
+  console.log(role);
 
   const dashboard = [
     <svg
@@ -66,7 +66,7 @@ function Sidenav({ color }) {
           backgroundColor: "#d9d9d9",
         }}
       />
-      {superadmin === "superadmin" ? (
+      {role === "superadmin" ? (
         <Menu theme="light" mode="inline">
           <Menu.Item key="dashboard">
             <NavLink to="/dashboard">
@@ -121,6 +121,48 @@ function Sidenav({ color }) {
             </NavLink>
           </Menu.Item>
         </Menu>
+      ) : role === "admin" ? (
+        <Menu theme="light" mode="inline">
+          <Menu.Item key="dashboard">
+            <NavLink to="/dashboard">
+              <span
+                className="icon"
+                style={{
+                  background: page === "dashboard" ? color : "",
+                }}
+              >
+                {dashboard}
+              </span>
+              <span className="label">Dashboard</span>
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key="my_leave">
+            <NavLink to="/my_leave">
+              <span
+                className="icon"
+                style={{
+                  background: page === "my_leave" ? color : "",
+                }}
+              >
+                {profile}
+              </span>
+              <span className="label">My Leaves</span>
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key="leaves">
+            <NavLink to="/leaves">
+              <span
+                className="icon"
+                style={{
+                  background: page === "leaves" ? color : "",
+                }}
+              >
+                {profile}
+              </span>
+              <span className="label">All Leaves</span>
+            </NavLink>
+          </Menu.Item>
+        </Menu>
       ) : (
         <Menu theme="light" mode="inline">
           <Menu.Item key="dashboard">
@@ -136,17 +178,17 @@ function Sidenav({ color }) {
               <span className="label">Dashboard</span>
             </NavLink>
           </Menu.Item>
-          <Menu.Item key="leaves">
-            <NavLink to="/leaves">
+          <Menu.Item key="my_leave">
+            <NavLink to="/my_leave">
               <span
                 className="icon"
                 style={{
-                  background: page === "leaves" ? color : "",
+                  background: page === "my_leave" ? color : "",
                 }}
               >
                 {profile}
               </span>
-              <span className="label">All Leaves</span>
+              <span className="label">My Leaves</span>
             </NavLink>
           </Menu.Item>
         </Menu>

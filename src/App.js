@@ -17,6 +17,8 @@ import Accounts from "./pages/Accounts";
 import AddAccounts from "./pages/AddAccounts";
 import EditAccounts from "./pages/EditAccounts";
 import EditLeave from "./pages/EditLeave";
+import MyLeave from "./pages/MyLeave";
+import AddMyLeave from "./pages/AddMyLeave";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("token"));
@@ -35,7 +37,9 @@ function App() {
             />
             <Route exact path="/view_employee/:id" component={ViewEmployee} />
             <Route exact path="/leaves" component={Leave} />
+            <Route exact path="/my_leave" component={MyLeave} />
             <Route exact path="/add_leave" component={AddLeave} />
+            <Route exact path="/add_my_leave" component={AddMyLeave} />
             <Route exact path="/edit_leave/:id" component={EditLeave} />
             <Route exact path="/accounts" component={Accounts} />
             <Route exact path="/add_accounts" component={AddAccounts} />
