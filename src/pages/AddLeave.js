@@ -16,18 +16,7 @@ const AddLeave = () => {
   const role = JSON.parse(localStorage.getItem("account")).role;
 
   const handleUpload = (values) => {
-    // const formData = new FormData();
-
-    // // Append other form data
-    // formData.append("email", email);
-    // formData.append("role", role);
-    // formData.append("leaveType", leaveType);
-    // formData.append("leaveCategory", leaveCategory);
-    // formData.append("date", myDate);
-    // formData.append("reason", values.reason);
-    // formData.append("remark", values.remark);
-    // console.log(formData);
-    // You can use any AJAX library you like
+    setLoading(true);
     fetch("http://localhost:5000/api/v1/leave/addLeaves", {
       method: "POST",
       headers: {
