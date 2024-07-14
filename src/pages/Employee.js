@@ -225,9 +225,9 @@ const Employee = () => {
               <img src={refreshIcon} alt="refresh.png" />
             </Button>
             <Button type="primary" className="primary-btn">
-              <Link to="/add_my_leave">
+              <Link to="/add_employee">
                 <PlusOutlined style={{ marginRight: "5px" }} />
-                Add Leave
+                Add Employee
               </Link>
             </Button>
           </div>
@@ -253,8 +253,12 @@ const Employee = () => {
               key="officeId"
               {...getColumnSearchProps("officeId")}
             />
-            <Column title="First Name" dataIndex="firstName" key="firstName" />
-            <Column title="Last Name" dataIndex="lastName" key="lastName" />
+            <Column title="Name" dataIndex="name" key="name" />
+            <Column
+              title="Phone"
+              key="phoneNumber"
+              render={(_, record) => <>0{record.phoneNumber}</>}
+            />
             <Column
               title="Designation"
               dataIndex="designation"

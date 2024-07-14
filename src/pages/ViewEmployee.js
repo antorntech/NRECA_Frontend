@@ -29,9 +29,7 @@ const ViewEmployee = () => {
   return (
     <div className="profile-wrapper">
       <div className="profile-header">
-        <h1>
-          {employeeDetails.firstName} {employeeDetails.lastName}
-        </h1>
+        <h1>{employeeDetails.name}</h1>
         <p>Employee Profile</p>
         <div className="underline"></div>
       </div>
@@ -55,7 +53,7 @@ const ViewEmployee = () => {
               <strong>Name:</strong>
               <p>
                 <SwapRightOutlined style={{ marginRight: "5px" }} />
-                {employeeDetails.firstName} {employeeDetails.lastName}
+                {employeeDetails.name}
               </p>
             </p>
 
@@ -78,34 +76,26 @@ const ViewEmployee = () => {
 
           <div>
             <p>
-              <strong>Primary Mobile:</strong>
-              <p>
-                <SwapRightOutlined style={{ marginRight: "5px" }} />0
-                {employeeDetails.primaryMobNumber}
-              </p>
-            </p>
-
-            <p>
-              <strong>Secondary Mobile:</strong>
-              <p>
-                <SwapRightOutlined style={{ marginRight: "5px" }} />0
-                {employeeDetails.secondaryMobNumber}
-              </p>
-            </p>
-
-            <p>
-              <strong>Casual Leave Days:</strong>
-              <p>
+              <strong>Department:</strong>
+              <p style={{ textTransform: "capitalize" }}>
                 <SwapRightOutlined style={{ marginRight: "5px" }} />
-                {employeeDetails.casualLeave}
+                {employeeDetails.department}
               </p>
             </p>
 
             <p>
-              <strong>Sick Leave Days:</strong>
-              <p>
+              <strong>Employee Type:</strong>
+              <p style={{ textTransform: "capitalize" }}>
                 <SwapRightOutlined style={{ marginRight: "5px" }} />
-                {employeeDetails.sickLeave}
+                {employeeDetails.employeeType}
+              </p>
+            </p>
+
+            <p>
+              <strong>Employee Status:</strong>
+              <p style={{ textTransform: "capitalize" }}>
+                <SwapRightOutlined style={{ marginRight: "5px" }} />
+                {employeeDetails.employeeStatus}
               </p>
             </p>
           </div>
