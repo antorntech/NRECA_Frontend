@@ -65,12 +65,15 @@ const EditEmployeeDetails = () => {
     formData.append("nationality", values.nationality);
     formData.append("projectName", values.projectName);
     formData.append("department", values.department);
-    formData.append("joiningDate", joiningDate);
-    formData.append("endDate", endDate);
+    formData.append(
+      "joiningDate",
+      joiningDate ? joiningDate : employeeDetails.joiningDate
+    );
+    formData.append("endDate", endDate ? endDate : employeeDetails.endDate);
+    formData.append("dob", dob ? dob : employeeDetails.dob);
     formData.append("employeeType", values.employeeType);
     formData.append("employeeStatus", values.employeeStatus);
     formData.append("designation", values.designation);
-    formData.append("dob", dob);
     setUploading(true);
 
     // You can use any AJAX library you like
@@ -272,30 +275,17 @@ const EditEmployeeDetails = () => {
           <Row gutter={[24, 0]}>
             <Col xs={24} md={8} lg={8}>
               <Form.Item name="dob" label="Date of Birth">
-                <DatePicker
-                  onChange={(date, dateString) => setDOB(dateString)}
-                  style={{ width: "100%", height: "40px", borderRadius: "4px" }}
-                />
+                <Input onChange={(e) => setDOB(e.target.value)} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8} lg={8}>
               <Form.Item name="joiningDate" label="Joining Date">
-                <DatePicker
-                  onChange={(date, dateString) => {
-                    setJoiningDate(dateString);
-                  }}
-                  style={{ width: "100%", height: "40px", borderRadius: "4px" }}
-                />
+                <Input onChange={(e) => setJoiningDate(e.target.value)} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8} lg={8}>
               <Form.Item name="endDate" label="End Date">
-                <DatePicker
-                  onChange={(date, dateString) => {
-                    setEndDate(dateString);
-                  }}
-                  style={{ width: "100%", height: "40px", borderRadius: "4px" }}
-                />
+                <Input onChange={(e) => setEndDate(e.target.value)} />
               </Form.Item>
             </Col>
           </Row>
