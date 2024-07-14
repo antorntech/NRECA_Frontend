@@ -196,147 +196,110 @@ const Employee = () => {
 
   return (
     <>
-      {employees && employees.length > 0 ? (
-        <div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <div>
-              <h1
-                style={{ margin: "0px", fontSize: "22px", fontWeight: "bold" }}
-              >
-                Employee Table
-              </h1>
-              <p>
-                Employee are{" "}
-                {employees.length > 0 ? "available." : "not available."}
-              </p>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <Button
-                onClick={() => getEmployee()}
-                className="primary-btn"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <img src={refreshIcon} alt="refresh.png" />
-              </Button>
-              <Button type="primary" className="primary-btn">
-                <Link to="/add_employee">
-                  <PlusOutlined style={{ marginRight: "5px" }} />
-                  Add Employee
-                </Link>
-              </Button>
-            </div>
+      <div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "30px",
+          }}
+        >
+          <div>
+            <h1>Employees Table</h1>
+            <p>
+              Employees are{" "}
+              {employees.length > 0 ? "available." : "not available."}
+            </p>
           </div>
-          <div style={{ marginTop: "10px", overflowX: "auto" }}>
-            <Table dataSource={employees}>
-              <Column
-                title="Avatar"
-                dataIndex="avatar"
-                key="avatar"
-                render={(_, record) => (
-                  <img
-                    src={`http://localhost:5000${record.avatar}`}
-                    style={{ width: "50px", height: "50px" }}
-                  />
-                )}
-              />
-              <Column
-                title="Office ID"
-                dataIndex="officeId"
-                key="officeId"
-                {...getColumnSearchProps("officeId")}
-              />
-              <Column
-                title="First Name"
-                dataIndex="firstName"
-                key="firstName"
-              />
-              <Column title="Last Name" dataIndex="lastName" key="lastName" />
-              <Column
-                title="Designation"
-                dataIndex="designation"
-                key="designation"
-              />
-              <Column
-                title="Office Email"
-                dataIndex="officeEmail"
-                key="officeEmail"
-                searchable
-                {...getColumnSearchProps("officeEmail")}
-              />
-              <Column
-                title="Action"
-                key="action"
-                width="100px"
-                render={(_, record) => (
-                  <Space size="middle">
-                    <Link to={`/edit_employee/${record._id}`}>
-                      <Button type="primary">
-                        <EditOutlined />
-                      </Button>
-                    </Link>
-                    <Link to={`/view_employee/${record._id}`}>
-                      <Button
-                        type="primary"
-                        style={{
-                          backgroundColor: "orange",
-                          border: "1px solid orange",
-                        }}
-                      >
-                        <EyeFilled />
-                      </Button>
-                    </Link>
-                    <Button
-                      type="danger"
-                      onClick={() => showConfirm(record._id)}
-                    >
-                      <DeleteOutlined />
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <Button
+              onClick={() => getEmployee()}
+              className="primary-btn"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <img src={refreshIcon} alt="refresh.png" />
+            </Button>
+            <Button type="primary" className="primary-btn">
+              <Link to="/add_my_leave">
+                <PlusOutlined style={{ marginRight: "5px" }} />
+                Add Leave
+              </Link>
+            </Button>
+          </div>
+        </div>
+        {loading ? (
+          <Loader />
+        ) : employees.length > 0 ? (
+          <Table dataSource={employees}>
+            <Column
+              title="Avatar"
+              dataIndex="avatar"
+              key="avatar"
+              render={(_, record) => (
+                <img
+                  src={`http://localhost:5000${record.avatar}`}
+                  style={{ width: "50px", height: "50px" }}
+                />
+              )}
+            />
+            <Column
+              title="Office ID"
+              dataIndex="officeId"
+              key="officeId"
+              {...getColumnSearchProps("officeId")}
+            />
+            <Column title="First Name" dataIndex="firstName" key="firstName" />
+            <Column title="Last Name" dataIndex="lastName" key="lastName" />
+            <Column
+              title="Designation"
+              dataIndex="designation"
+              key="designation"
+            />
+            <Column
+              title="Office Email"
+              dataIndex="officeEmail"
+              key="officeEmail"
+              searchable
+              {...getColumnSearchProps("officeEmail")}
+            />
+            <Column
+              title="Action"
+              key="action"
+              width="100px"
+              render={(_, record) => (
+                <Space size="middle">
+                  <Link to={`/edit_employee/${record._id}`}>
+                    <Button type="primary">
+                      <EditOutlined />
                     </Button>
-                  </Space>
-                )}
-              />
-            </Table>
-          </div>
-        </div>
-      ) : (
-        <div style={{ height: "80%" }}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: "30px",
-            }}
-          >
-            <div>
-              <h1>Employee Table</h1>
-              <p>Employee not available.</p>
-            </div>
-            <div>
-              <div style={{ marginRight: "10px" }}>
-                <Button type="primary" className="primary-btn">
-                  <Link to="/add_employee">
-                    <PlusOutlined style={{ marginRight: "5px" }} />
-                    Add Employee
                   </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-          <div className="loader_position">
-            <Loader />
-          </div>
-        </div>
-      )}
+                  <Link to={`/view_employee/${record._id}`}>
+                    <Button
+                      type="primary"
+                      style={{
+                        backgroundColor: "orange",
+                        border: "1px solid orange",
+                      }}
+                    >
+                      <EyeFilled />
+                    </Button>
+                  </Link>
+                  <Button type="danger" onClick={() => showConfirm(record._id)}>
+                    <DeleteOutlined />
+                  </Button>
+                </Space>
+              )}
+            />
+          </Table>
+        ) : (
+          <Loader />
+        )}
+      </div>
     </>
   );
 };

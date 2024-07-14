@@ -41,6 +41,19 @@ body {
   background-color: #017a44;
 }
 
+.ant-select-selector {
+  height: 40px !important;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 5px !important;
+  padding: 5px !important;
+}
+
+.ant-picker.ant-picker-range {
+  width: 100% !important;
+  padding: 12px;
+  border-radius: 5px !important;
+}
+
 @media (min-width: 992px) {
   .layout-dashboard {
     overflow: auto;

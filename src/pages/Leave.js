@@ -1,4 +1,4 @@
-import { Space, Table, Button, Modal, Input } from "antd";
+import { Space, Table, Button, Modal, Input, Tooltip } from "antd";
 import {
   PlusOutlined,
   EditOutlined,
@@ -252,18 +252,35 @@ const Leave = () => {
           <Table dataSource={leaves}>
             <Column
               title="Email"
+              width={"250px"}
               dataIndex="email"
               key="email"
               {...getColumnSearchProps("email")}
             />
             <Column
               title="Category"
+              width={"170px"}
               dataIndex="leaveCategory"
               key="leaveCategory"
             />
-            <Column title="Type" dataIndex="leaveType" key="leaveType" />
+            <Column
+              title="Type"
+              width={"150px"}
+              dataIndex="leaveType"
+              key="leaveType"
+            />
+            <Column
+              title="Reason"
+              key="reason"
+              render={(_, record) => (
+                <Tooltip title={record?.reason}>
+                  <span>{record?.reason.slice(0, 40)}...</span>
+                </Tooltip>
+              )}
+            />
             <Column
               title="Status"
+              width={"250px"}
               render={(_, record) => (
                 <Space>
                   <span
@@ -289,6 +306,7 @@ const Leave = () => {
             />
             <Column
               title="Days"
+              width={"80px"}
               render={(_, record) => (
                 <Space>
                   <span>{record.days}</span>
@@ -317,18 +335,35 @@ const Leave = () => {
           <Table dataSource={leaveForAdmin}>
             <Column
               title="Email"
+              width={"250px"}
               dataIndex="email"
               key="email"
               {...getColumnSearchProps("email")}
             />
             <Column
               title="Category"
+              width={"170px"}
               dataIndex="leaveCategory"
               key="leaveCategory"
             />
-            <Column title="Type" dataIndex="leaveType" key="leaveType" />
+            <Column
+              title="Type"
+              width={"150px"}
+              dataIndex="leaveType"
+              key="leaveType"
+            />
+            <Column
+              title="Reason"
+              key="reason"
+              render={(_, record) => (
+                <Tooltip title={record?.reason}>
+                  <span>{record?.reason.slice(0, 40)}...</span>
+                </Tooltip>
+              )}
+            />
             <Column
               title="Status"
+              width={"250px"}
               render={(_, record) => (
                 <Space>
                   <span
@@ -354,6 +389,7 @@ const Leave = () => {
             />
             <Column
               title="Days"
+              width={"80px"}
               render={(_, record) => (
                 <Space>
                   <span>{record.days}</span>
@@ -382,18 +418,35 @@ const Leave = () => {
           <Table dataSource={filteredLeaves}>
             <Column
               title="Email"
+              width={"250px"}
               dataIndex="email"
               key="email"
               {...getColumnSearchProps("email")}
             />
             <Column
               title="Category"
+              width={"170px"}
               dataIndex="leaveCategory"
               key="leaveCategory"
             />
-            <Column title="Type" dataIndex="leaveType" key="leaveType" />
+            <Column
+              title="Type"
+              width={"150px"}
+              dataIndex="leaveType"
+              key="leaveType"
+            />
+            <Column
+              title="Reason"
+              key="reason"
+              render={(_, record) => (
+                <Tooltip title={record?.reason}>
+                  <span>{record?.reason.slice(0, 40)}...</span>
+                </Tooltip>
+              )}
+            />
             <Column
               title="Status"
+              width={"250px"}
               render={(_, record) => (
                 <Space>
                   <span
@@ -419,6 +472,7 @@ const Leave = () => {
             />
             <Column
               title="Days"
+              width={"80px"}
               render={(_, record) => (
                 <Space>
                   <span>{record.days}</span>

@@ -1,4 +1,4 @@
-import { Space, Table, Button, Modal } from "antd";
+import { Space, Table, Button, Modal, Tooltip } from "antd";
 import {
   PlusOutlined,
   EditOutlined,
@@ -128,15 +128,36 @@ const MyLeave = () => {
           <Loader />
         ) : leaves.length > 0 ? (
           <Table dataSource={leaves}>
-            <Column title="Email" dataIndex="email" key="email" />
+            <Column
+              title="Email"
+              width={"250px"}
+              dataIndex="email"
+              key="email"
+            />
             <Column
               title="Category"
+              width={"170px"}
               dataIndex="leaveCategory"
               key="leaveCategory"
             />
-            <Column title="Type" dataIndex="leaveType" key="leaveType" />
+            <Column
+              title="Type"
+              width={"150px"}
+              dataIndex="leaveType"
+              key="leaveType"
+            />
+            <Column
+              title="Reason"
+              key="reason"
+              render={(_, record) => (
+                <Tooltip title={record?.reason}>
+                  <span>{record?.reason.slice(0, 40)}...</span>
+                </Tooltip>
+              )}
+            />
             <Column
               title="Status"
+              width={"250px"}
               render={(_, record) => (
                 <Space>
                   <span
@@ -162,6 +183,7 @@ const MyLeave = () => {
             />
             <Column
               title="Days"
+              width={"80px"}
               render={(_, record) => (
                 <Space>
                   <span>{record.days}</span>
@@ -182,7 +204,7 @@ const MyLeave = () => {
                       </Button>
                     </Link>
                   ) : (
-                    <Link to={`/edit_leave/${record._id}`}>
+                    <Link to={`/edit_my_leave/${record._id}`}>
                       <Button type="primary">
                         <EditOutlined />
                       </Button>
