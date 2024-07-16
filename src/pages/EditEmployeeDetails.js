@@ -59,7 +59,7 @@ const EditEmployeeDetails = () => {
       formData.append("avatar", file);
     });
 
-    // Append other form data
+    // Append office information
     formData.append("officeId", values.officeId);
     formData.append("officeEmail", values.officeEmail);
     formData.append("phoneNumber", values.phoneNumber);
@@ -68,15 +68,57 @@ const EditEmployeeDetails = () => {
     formData.append("nationality", values.nationality);
     formData.append("projectName", values.projectName);
     formData.append("department", values.department);
+    formData.append("joiningDate", joiningDate ? joiningDate : "YYYY-MM-DD");
+    formData.append("endDate", endDate ? endDate : "Running");
+    formData.append("dob", dob ? dob : "YYYY-MM-DD");
     formData.append(
-      "joiningDate",
-      joiningDate ? joiningDate : employeeDetails.joiningDate
+      "employeeType",
+      values.employeeType ? values.employeeType : "Full Time"
     );
-    formData.append("endDate", endDate ? endDate : employeeDetails.endDate);
-    formData.append("dob", dob ? dob : employeeDetails.dob);
-    formData.append("employeeType", values.employeeType);
-    formData.append("employeeStatus", values.employeeStatus);
+    formData.append(
+      "employeeStatus",
+      values.employeeStatus ? values.employeeStatus : "Active"
+    );
     formData.append("designation", values.designation);
+
+    // Append NID photo file to formData
+    nidFileList.forEach((file) => {
+      formData.append("nidDoc", file);
+    });
+
+    // Append passport photo file to formData
+    passportFileList.forEach((file) => {
+      formData.append("passportDoc", file);
+    });
+
+    // Append TIN photo file to formData
+    tinFileList.forEach((file) => {
+      formData.append("tinDoc", file);
+    });
+
+    // Append signature photo file to formData
+    signatureFileList.forEach((file) => {
+      formData.append("signatureDoc", file);
+    });
+
+    // Append other form data
+    formData.append("personalPhoneNumber", values.personalPhoneNumber);
+    formData.append("emergencyNumber", values.emergencyNumber);
+    formData.append("relationShipNumber", values.relationShipNumber);
+    formData.append("personalEmail", values.personalEmail);
+    formData.append("presentAddress", values.presentAddress);
+    formData.append("permanentAddress", values.permanentAddress);
+    formData.append("nid", values.nid);
+    formData.append("passport", values.passport);
+    formData.append("tin", values.tin);
+
+    // Append bank information
+    formData.append("bankName", values.bankName);
+    formData.append("bankBranch", values.bankBranch);
+    formData.append("accountNumber", values.accountNumber);
+    formData.append("routingNumber", values.routingNumber);
+    formData.append("accountTitle", values.accountTitle);
+    formData.append("accountEmail", values.accountEmail);
     setUploading(true);
 
     // You can use any AJAX library you like
