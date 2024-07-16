@@ -94,6 +94,19 @@ function Sidenav({ color }) {
               <span className="label">All Employee</span>
             </NavLink>
           </Menu.Item>
+          <Menu.Item key="documentscv">
+            <NavLink to="/documentscv">
+              <span
+                className="icon"
+                style={{
+                  background: page === "documentscv" ? color : "",
+                }}
+              >
+                {profile}
+              </span>
+              <span className="label">Documents & CV's</span>
+            </NavLink>
+          </Menu.Item>
           <Menu.Item key="leaves">
             <NavLink to="/leaves">
               <span

@@ -20,6 +20,9 @@ import EditLeave from "./pages/EditLeave";
 import MyLeave from "./pages/MyLeave";
 import AddMyLeave from "./pages/AddMyLeave";
 import EditMyLeave from "./pages/EditMyLeave";
+import DocumentsCV from "./pages/DocumentsCV";
+import AddDocumentsCV from "./pages/AddDocumentsCV";
+import EditDocumentsCV from "./pages/EditDocumentsCV";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("token"));
@@ -35,6 +38,13 @@ function App() {
               exact
               path="/edit_employee/:id"
               component={EditEmployeeDetails}
+            />
+            <Route exact path="/documentscv" component={DocumentsCV} />
+            <Route exact path="/add_documentscv" component={AddDocumentsCV} />
+            <Route
+              exact
+              path="/edit_documentscv/:id"
+              component={EditDocumentsCV}
             />
             <Route exact path="/view_employee/:id" component={ViewEmployee} />
             <Route exact path="/leaves" component={Leave} />

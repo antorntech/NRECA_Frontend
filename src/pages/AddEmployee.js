@@ -12,7 +12,7 @@ import {
   Select,
   DatePicker,
 } from "antd";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 
 const AddEmployee = () => {
   const navigate = useHistory();

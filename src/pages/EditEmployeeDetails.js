@@ -68,9 +68,12 @@ const EditEmployeeDetails = () => {
     formData.append("nationality", values.nationality);
     formData.append("projectName", values.projectName);
     formData.append("department", values.department);
-    formData.append("joiningDate", joiningDate ? joiningDate : "YYYY-MM-DD");
-    formData.append("endDate", endDate ? endDate : "Running");
-    formData.append("dob", dob ? dob : "YYYY-MM-DD");
+    formData.append(
+      "joiningDate",
+      joiningDate ? joiningDate : employeeDetails?.joiningDate
+    );
+    formData.append("endDate", endDate ? endDate : employeeDetails?.endDate);
+    formData.append("dob", dob ? dob : employeeDetails?.dob);
     formData.append(
       "employeeType",
       values.employeeType ? values.employeeType : "Full Time"
