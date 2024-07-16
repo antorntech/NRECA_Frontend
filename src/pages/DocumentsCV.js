@@ -21,6 +21,7 @@ const { Column } = Table;
 const DocumentsCV = () => {
   const [documentscv, setDocumentsCV] = useState([]);
   const [loading, setLoading] = useState(false); // State to manage loading state
+  const role = JSON.parse(localStorage.getItem("account")).role;
 
   const getDocumentsCV = async () => {
     setLoading(true); // Set loading state to true
@@ -225,12 +226,14 @@ const DocumentsCV = () => {
             >
               <img src={refreshIcon} alt="refresh.png" />
             </Button>
-            <Button type="primary" className="primary-btn">
-              <Link to="/add_documentscv">
-                <PlusOutlined style={{ marginRight: "5px" }} />
-                Add Documents & CV
-              </Link>
-            </Button>
+            {role === "superadmin" || role === "admin" ? (
+              <Button type="primary" className="primary-btn">
+                <Link to="/add_documentscv">
+                  <PlusOutlined style={{ marginRight: "5px" }} />
+                  Add Documents & CV
+                </Link>
+              </Button>
+            ) : null}
           </div>
         </div>
         {loading ? (
@@ -306,23 +309,28 @@ const DocumentsCV = () => {
                 </Space>
               )}
             />
-            <Column
-              title="Action"
-              key="action"
-              width="100px"
-              render={(_, record) => (
-                <Space size="middle">
-                  <Link to={`/edit_documentscv/${record._id}`}>
-                    <Button type="primary">
-                      <EditOutlined />
+            {role === "superadmin" || role === "admin" ? (
+              <Column
+                title="Action"
+                key="action"
+                width="100px"
+                render={(_, record) => (
+                  <Space size="middle">
+                    <Link to={`/edit_documentscv/${record._id}`}>
+                      <Button type="primary">
+                        <EditOutlined />
+                      </Button>
+                    </Link>
+                    <Button
+                      type="danger"
+                      onClick={() => showConfirm(record._id)}
+                    >
+                      <DeleteOutlined />
                     </Button>
-                  </Link>
-                  <Button type="danger" onClick={() => showConfirm(record._id)}>
-                    <DeleteOutlined />
-                  </Button>
-                </Space>
-              )}
-            />
+                  </Space>
+                )}
+              />
+            ) : null}
           </Table>
         ) : (
           <Loader />

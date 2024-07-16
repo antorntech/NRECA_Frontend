@@ -162,6 +162,32 @@ function Sidenav({ color }) {
               <span className="label">Dashboard</span>
             </NavLink>
           </Menu.Item>
+          <Menu.Item key="documentscv">
+            <NavLink to="/documentscv">
+              <span
+                className="icon"
+                style={{
+                  background: page === "documentscv" ? color : "",
+                }}
+              >
+                {profile}
+              </span>
+              <span className="label">Documents & CV's</span>
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key="formtemplate">
+            <NavLink to="/formtemplate">
+              <span
+                className="icon"
+                style={{
+                  background: page === "formtemplate" ? color : "",
+                }}
+              >
+                {profile}
+              </span>
+              <span className="label">Form & Template</span>
+            </NavLink>
+          </Menu.Item>
           <Menu.Item key="my_leave">
             <NavLink to="/my_leave">
               <span
@@ -202,6 +228,32 @@ function Sidenav({ color }) {
                 {dashboard}
               </span>
               <span className="label">Dashboard</span>
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key="documentscv">
+            <NavLink to="/documentscv">
+              <span
+                className="icon"
+                style={{
+                  background: page === "documentscv" ? color : "",
+                }}
+              >
+                {profile}
+              </span>
+              <span className="label">Documents & CV's</span>
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key="formtemplate">
+            <NavLink to="/formtemplate">
+              <span
+                className="icon"
+                style={{
+                  background: page === "formtemplate" ? color : "",
+                }}
+              >
+                {profile}
+              </span>
+              <span className="label">Form & Template</span>
             </NavLink>
           </Menu.Item>
           <Menu.Item key="my_leave">

@@ -20,7 +20,9 @@ const { Column } = Table;
 
 const FormTemplate = () => {
   const [formTemplate, setFormTemplate] = useState([]);
-  const [loading, setLoading] = useState(false); // State to manage loading state
+  const [loading, setLoading] = useState(false);
+
+  const role = JSON.parse(localStorage.getItem("account")).role;
 
   const getFormTemplate = async () => {
     setLoading(true); // Set loading state to true
@@ -225,12 +227,14 @@ const FormTemplate = () => {
             >
               <img src={refreshIcon} alt="refresh.png" />
             </Button>
-            <Button type="primary" className="primary-btn">
-              <Link to="/add_formtemplate">
-                <PlusOutlined style={{ marginRight: "5px" }} />
-                Add Form Template
-              </Link>
-            </Button>
+            {role === "superadmin" || role === "admin" ? (
+              <Button type="primary" className="primary-btn">
+                <Link to="/add_formtemplate">
+                  <PlusOutlined style={{ marginRight: "5px" }} />
+                  Add Form Template
+                </Link>
+              </Button>
+            ) : null}
           </div>
         </div>
         {loading ? (
@@ -288,23 +292,28 @@ const FormTemplate = () => {
                 </Space>
               )}
             />
-            <Column
-              title="Action"
-              key="action"
-              width="100px"
-              render={(_, record) => (
-                <Space size="middle">
-                  <Link to={`/edit_formtemplate/${record._id}`}>
-                    <Button type="primary">
-                      <EditOutlined />
+            {role === "superadmin" || role === "admin" ? (
+              <Column
+                title="Action"
+                key="action"
+                width="100px"
+                render={(_, record) => (
+                  <Space size="middle">
+                    <Link to={`/edit_formtemplate/${record._id}`}>
+                      <Button type="primary">
+                        <EditOutlined />
+                      </Button>
+                    </Link>
+                    <Button
+                      type="danger"
+                      onClick={() => showConfirm(record._id)}
+                    >
+                      <DeleteOutlined />
                     </Button>
-                  </Link>
-                  <Button type="danger" onClick={() => showConfirm(record._id)}>
-                    <DeleteOutlined />
-                  </Button>
-                </Space>
-              )}
-            />
+                  </Space>
+                )}
+              />
+            ) : null}
           </Table>
         ) : (
           <Loader />
