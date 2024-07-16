@@ -4,6 +4,9 @@ import Echart from "../components/chart/EChart";
 import LineChart from "../components/chart/LineChart";
 function Home() {
   const [employees, setEmployees] = useState([]);
+  const [documentscv, setDocumentsCV] = useState([]);
+  const [formtemplate, setFormTemplate] = useState([]);
+  const [leaves, setLeaves] = useState([]);
 
   const { Title } = Typography;
 
@@ -20,8 +23,52 @@ function Home() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setEmployees(data);
+      });
+  }, [token]);
+
+  // Get all documents & cv
+  useEffect(() => {
+    fetch("http://localhost:5000/api/v1/documentscv", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setDocumentsCV(data);
+      });
+  }, [token]);
+
+  // Get all form & template
+  useEffect(() => {
+    fetch("http://localhost:5000/api/v1/formtemplate", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setFormTemplate(data);
+      });
+  }, [token]);
+
+  // Get all form & template
+  useEffect(() => {
+    fetch("http://localhost:5000/api/v1/leave", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setLeaves(data);
       });
   }, [token]);
 
@@ -57,6 +104,28 @@ function Home() {
     {
       today: "Total Employee",
       title: `${employees && employees.length > 0 ? employees.length : 0}`,
+      icon: profile,
+      bnb: "bnb2",
+    },
+    {
+      today: "Total Documents & CV",
+      title: `${
+        documentscv && documentscv.length > 0 ? documentscv.length : 0
+      }`,
+      icon: profile,
+      bnb: "bnb2",
+    },
+    {
+      today: "Total Forms & Templates",
+      title: `${
+        formtemplate && formtemplate.length > 0 ? formtemplate.length : 0
+      }`,
+      icon: profile,
+      bnb: "bnb2",
+    },
+    {
+      today: "Total Leaves",
+      title: `${leaves && leaves.length > 0 ? leaves.length : 0}`,
       icon: profile,
       bnb: "bnb2",
     },

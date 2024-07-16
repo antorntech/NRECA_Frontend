@@ -6,7 +6,6 @@ function Sidenav({ color }) {
   const { pathname } = useLocation();
   const page = pathname.replace("/", "");
   const role = JSON.parse(localStorage.getItem("account")).role;
-  console.log(role);
 
   const dashboard = [
     <svg
@@ -267,6 +266,19 @@ function Sidenav({ color }) {
                 {profile}
               </span>
               <span className="label">My Leaves</span>
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key="my_profile">
+            <NavLink to="/my_profile">
+              <span
+                className="icon"
+                style={{
+                  background: page === "my_profile" ? color : "",
+                }}
+              >
+                {profile}
+              </span>
+              <span className="label">My Profile</span>
             </NavLink>
           </Menu.Item>
         </Menu>

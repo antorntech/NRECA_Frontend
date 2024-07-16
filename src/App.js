@@ -26,6 +26,7 @@ import EditDocumentsCV from "./pages/EditDocumentsCV";
 import FormTemplate from "./pages/FormTemplate";
 import AddFormTemplate from "./pages/AddFormTemplate";
 import EditFormTemplate from "./pages/EditFormTemplate";
+import Profile from "./pages/Profile";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("token"));
@@ -57,6 +58,7 @@ function App() {
               component={EditFormTemplate}
             />
             <Route exact path="/view_employee/:id" component={ViewEmployee} />
+            <Route exact path="/my_profile" component={Profile} />
             <Route exact path="/leaves" component={Leave} />
             <Route exact path="/my_leave" component={MyLeave} />
             <Route exact path="/edit_my_leave/:id" component={EditMyLeave} />

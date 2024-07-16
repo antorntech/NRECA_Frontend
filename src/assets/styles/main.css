@@ -3105,9 +3105,6 @@ section.ant-layout.ant-layout-has-sider.layout-dashboard.layout-profile
 .profile-wrapper {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .profile-wrapper .profile-header {
@@ -3131,11 +3128,6 @@ section.ant-layout.ant-layout-has-sider.layout-dashboard.layout-profile
 }
 
 .profile-body {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  gap: 30px;
 }
 
 .profile-body img {
