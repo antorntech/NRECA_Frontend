@@ -45,7 +45,7 @@ const EditDocumentsCV = () => {
   const [form] = Form.useForm();
   const [documentscvDetails, setDocumentsCVDetails] = useState({});
   const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("Running");
+  const [endDate, setEndDate] = useState("");
   const [cvDocFileList, setCvDocFileList] = useState([]);
   const [uploading, setUploading] = useState(false);
 

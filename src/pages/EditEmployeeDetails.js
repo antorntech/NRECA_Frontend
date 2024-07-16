@@ -21,13 +21,13 @@ const EditEmployeeDetails = () => {
   const [uploading, setUploading] = useState(false);
   const [dob, setDOB] = useState("");
   const [joiningDate, setJoiningDate] = useState("");
-  const [endDate, setEndDate] = useState("Running");
+  const [endDate, setEndDate] = useState("");
   const [avatarFileList, setAvatarFileList] = useState([]);
   const [nidFileList, setNIDFileList] = useState([]);
   const [passportFileList, setPassportFileList] = useState([]);
   const [tinFileList, setTINFileList] = useState([]);
   const [signatureFileList, setSignatureFileList] = useState([]);
-
+  console.log(employeeDetails);
   useEffect(() => {
     fetch(`http://localhost:5000/api/v1/employee/${id}`, {
       method: "GET",
