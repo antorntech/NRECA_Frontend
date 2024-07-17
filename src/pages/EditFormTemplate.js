@@ -9,9 +9,29 @@ const EditFormTemplate = () => {
   const { id } = useParams();
   const navigate = useHistory();
   const [form] = Form.useForm();
+  const [formCategory, setFormCategory] = useState([]);
   const [formTemplateDetails, setFormTemplateDetails] = useState({});
   const [fileDocFileList, setFileDocFileList] = useState([]);
   const [uploading, setUploading] = useState(false);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/v1/formcategory", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setFormCategory(data);
+      });
+  }, []);
+
+  const formCategoryOptions = formCategory.map((category) => (
+    <Option key={category._id} value={category.formCategory}>
+      {category.formCategory}
+    </Option>
+  ));
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/v1/formtemplate/${id}`, {
@@ -121,9 +141,8 @@ const EditFormTemplate = () => {
                     },
                   ]}
                 >
-                  <Select>
-                    <Option value="File Category 1">File Category 1</Option>
-                    <Option value="File Category 2">File Category 2</Option>
+                  <Select placeholder="Select Form Category">
+                    {formCategoryOptions}
                   </Select>
                 </Form.Item>
               </Col>

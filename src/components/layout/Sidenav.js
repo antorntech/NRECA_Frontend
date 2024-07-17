@@ -119,7 +119,7 @@ function Sidenav({ color }) {
               <span className="label">Form & Template</span>
             </NavLink>
           </Menu.Item>
-          <Menu.Item key="leaves">
+          {/* <Menu.Item key="leaves">
             <NavLink to="/leaves">
               <span
                 className="icon"
@@ -131,7 +131,7 @@ function Sidenav({ color }) {
               </span>
               <span className="label">All Leaves</span>
             </NavLink>
-          </Menu.Item>
+          </Menu.Item> */}
           <Menu.Item key="accounts">
             <NavLink to="/accounts">
               <span
@@ -142,7 +142,7 @@ function Sidenav({ color }) {
               >
                 {profile}
               </span>
-              <span className="label">All Accounts</span>
+              <span className="label">Administration</span>
             </NavLink>
           </Menu.Item>
         </Menu>
