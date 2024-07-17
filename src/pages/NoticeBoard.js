@@ -1,7 +1,7 @@
 import React from "react";
 import underMantenanceImg from "../assets/images/demo.png";
 
-const LinksCollection = () => {
+const NoticeBoard = () => {
   return (
     <div
       style={{
@@ -22,11 +22,11 @@ const LinksCollection = () => {
           textDecoration: "underline",
         }}
       >
-        Links & Collection
+        Notice Board
       </h1>
       <img src={underMantenanceImg} alt="demo.png" style={{ width: "40%" }} />
     </div>
   );
 };
 
-export default LinksCollection;
+export default NoticeBoard;

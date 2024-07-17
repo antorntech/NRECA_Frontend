@@ -29,6 +29,9 @@ import EditFormTemplate from "./pages/EditFormTemplate";
 import Profile from "./pages/Profile";
 import LinksCollection from "./pages/LinksCollection";
 import PhotoGallery from "./pages/PhotoGallery";
+import Addministration from "./pages/Addministration";
+import WorldMap from "./pages/WorldMap";
+import NoticeBoard from "./pages/NoticeBoard";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("token"));
@@ -72,6 +75,9 @@ function App() {
             <Route exact path="/edit_accounts/:id" component={EditAccounts} />
             <Route exact path="/links_collection" component={LinksCollection} />
             <Route exact path="/photo_gallery" component={PhotoGallery} />
+            <Route exact path="/world_map" component={WorldMap} />
+            <Route exact path="/notice_board" component={NoticeBoard} />
+            <Route exact path="/administration" component={Addministration} />
             <Redirect from="*" to="/dashboard" />
           </Main>
         </Switch>

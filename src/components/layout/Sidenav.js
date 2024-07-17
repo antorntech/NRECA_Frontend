@@ -158,12 +158,38 @@ function Sidenav({ color }) {
               <span className="label">Photo Gallery</span>
             </NavLink>
           </Menu.Item>
-          <Menu.Item key="accounts">
-            <NavLink to="/accounts">
+          <Menu.Item key="world_map">
+            <NavLink to="/world_map">
               <span
                 className="icon"
                 style={{
-                  background: page === "accounts" ? color : "",
+                  background: page === "world_map" ? color : "",
+                }}
+              >
+                {profile}
+              </span>
+              <span className="label">NRECA World Map</span>
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key="notice_board">
+            <NavLink to="/notice_board">
+              <span
+                className="icon"
+                style={{
+                  background: page === "notice_board" ? color : "",
+                }}
+              >
+                {profile}
+              </span>
+              <span className="label">Notice Board</span>
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key="administration">
+            <NavLink to="/administration">
+              <span
+                className="icon"
+                style={{
+                  background: page === "administration" ? color : "",
                 }}
               >
                 {profile}
