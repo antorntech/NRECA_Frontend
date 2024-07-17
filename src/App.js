@@ -27,6 +27,8 @@ import FormTemplate from "./pages/FormTemplate";
 import AddFormTemplate from "./pages/AddFormTemplate";
 import EditFormTemplate from "./pages/EditFormTemplate";
 import Profile from "./pages/Profile";
+import LinksCollection from "./pages/LinksCollection";
+import PhotoGallery from "./pages/PhotoGallery";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("token"));
@@ -68,6 +70,8 @@ function App() {
             <Route exact path="/accounts" component={Accounts} />
             <Route exact path="/add_accounts" component={AddAccounts} />
             <Route exact path="/edit_accounts/:id" component={EditAccounts} />
+            <Route exact path="/links_collection" component={LinksCollection} />
+            <Route exact path="/photo_gallery" component={PhotoGallery} />
             <Redirect from="*" to="/dashboard" />
           </Main>
         </Switch>

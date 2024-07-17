@@ -90,7 +90,7 @@ function Sidenav({ color }) {
               >
                 {profile}
               </span>
-              <span className="label">All Employee</span>
+              <span className="label">Employee Records</span>
             </NavLink>
           </Menu.Item>
           <Menu.Item key="documentscv">
@@ -132,6 +132,32 @@ function Sidenav({ color }) {
               <span className="label">All Leaves</span>
             </NavLink>
           </Menu.Item> */}
+          <Menu.Item key="linkscollection">
+            <NavLink to="/links_collection">
+              <span
+                className="icon"
+                style={{
+                  background: page === "linkscollection" ? color : "",
+                }}
+              >
+                {profile}
+              </span>
+              <span className="label">Links & Collection</span>
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key="photogallery">
+            <NavLink to="/photo_gallery">
+              <span
+                className="icon"
+                style={{
+                  background: page === "photogallery" ? color : "",
+                }}
+              >
+                {profile}
+              </span>
+              <span className="label">Photo Gallery</span>
+            </NavLink>
+          </Menu.Item>
           <Menu.Item key="accounts">
             <NavLink to="/accounts">
               <span
