@@ -173,119 +173,139 @@ const FormTemplate = () => {
           <Loader />
         ) : matchedFormCategories.length > 0 ? (
           <>
-            <Row gutter={16}>
-              {matchedFormCategories.map((category) => (
-                <Col span={16} key={category.formCategory}>
-                  <Card
-                    title={category.formCategory}
-                    bordered={false}
-                    style={{ marginBottom: "20px" }}
-                  >
-                    {groupedFormTemplates[category.formCategory].map(
-                      (file, index) => (
-                        <div
-                          key={index}
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                            marginBottom: "10px",
-                          }}
-                        >
+            <div
+              style={{
+                width: "100%",
+              }}
+            >
+              <div
+                style={{
+                  width: "70%",
+                  margin: "0 auto",
+                }}
+              >
+                {matchedFormCategories.map((category) => (
+                  <div span={16} key={category.formCategory}>
+                    <Card
+                      title={category.formCategory}
+                      bordered={false}
+                      style={{ marginBottom: "20px" }}
+                    >
+                      {groupedFormTemplates[category.formCategory].map(
+                        (file, index) => (
                           <div
+                            key={index}
                             style={{
                               display: "flex",
-                              gap: "5px",
-                              marginLeft: "50px",
+                              justifyContent: "space-between",
+                              alignItems: "center",
+                              marginBottom: "10px",
                             }}
                           >
-                            <img src={checkMarkIcon} alt="checkMarkIcon.png" />
-                            <p
+                            <div
                               style={{
-                                margin: "0px",
-                                fontWeight: "bold",
-                                color: "#138551",
-                                fontSize: "16px",
+                                display: "flex",
+                                gap: "5px",
+                                marginLeft: "50px",
                               }}
                             >
-                              {file.fileName}
-                            </p>
-                          </div>
-                          <div style={{ display: "flex", gap: "10px" }}>
-                            {file?.fileDoc ? (
-                              <Button
+                              <img
+                                src={checkMarkIcon}
+                                alt="checkMarkIcon.png"
+                              />
+                              <p
                                 style={{
-                                  display: "flex",
-                                  alignItems: "center",
-                                  border: "1px solid skyblue",
+                                  margin: "0px",
+                                  fontWeight: "bold",
+                                  color: "#138551",
+                                  fontSize: "16px",
                                 }}
-                                href={`http://localhost:5000${file.fileDoc}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
                               >
-                                <CloudDownloadOutlined
-                                  style={{ fontSize: "17px", color: "skyblue" }}
-                                />
-                              </Button>
-                            ) : (
-                              <Button
-                                style={{
-                                  display: "flex",
-                                  alignItems: "center",
-                                  border: "1px solid skyblue",
-                                }}
-                                disabled
-                              >
-                                <FilePdfOutlined
-                                  style={{ fontSize: "17px", color: "skyblue" }}
-                                />
-                              </Button>
-                            )}
-
-                            {role === "superadmin" || role === "admin" ? (
-                              <>
-                                <Link
-                                  to={`/edit_formtemplate/${file._id}`}
-                                  style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                  }}
-                                >
-                                  <Button
-                                    style={{
-                                      display: "flex",
-                                      alignItems: "center",
-                                      color: "orange",
-                                      border: "1px solid orange",
-                                      boxShadow: "0 2px 0 rgb(0 0 0 / 5%)",
-                                    }}
-                                  >
-                                    <EditOutlined />
-                                  </Button>
-                                </Link>
+                                {file.fileName}
+                              </p>
+                            </div>
+                            <div style={{ display: "flex", gap: "10px" }}>
+                              {file?.fileDoc ? (
                                 <Button
                                   style={{
                                     display: "flex",
                                     alignItems: "center",
-                                    color: "#f5222d",
-                                    border: "1px solid #f5222d",
-                                    boxShadow: "0 2px 0 rgb(0 0 0 / 5%)",
+                                    border: "1px solid skyblue",
                                   }}
-                                  type="link"
-                                  onClick={() => showConfirm(file._id)}
+                                  href={`http://localhost:5000${file.fileDoc}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
                                 >
-                                  <DeleteOutlined />
+                                  <CloudDownloadOutlined
+                                    style={{
+                                      fontSize: "17px",
+                                      color: "skyblue",
+                                    }}
+                                  />
                                 </Button>
-                              </>
-                            ) : null}
+                              ) : (
+                                <Button
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    border: "1px solid skyblue",
+                                  }}
+                                  disabled
+                                >
+                                  <FilePdfOutlined
+                                    style={{
+                                      fontSize: "17px",
+                                      color: "skyblue",
+                                    }}
+                                  />
+                                </Button>
+                              )}
+
+                              {role === "superadmin" || role === "admin" ? (
+                                <>
+                                  <Link
+                                    to={`/edit_formtemplate/${file._id}`}
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                    }}
+                                  >
+                                    <Button
+                                      style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        color: "orange",
+                                        border: "1px solid orange",
+                                        boxShadow: "0 2px 0 rgb(0 0 0 / 5%)",
+                                      }}
+                                    >
+                                      <EditOutlined />
+                                    </Button>
+                                  </Link>
+                                  <Button
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                      color: "#f5222d",
+                                      border: "1px solid #f5222d",
+                                      boxShadow: "0 2px 0 rgb(0 0 0 / 5%)",
+                                    }}
+                                    type="link"
+                                    onClick={() => showConfirm(file._id)}
+                                  >
+                                    <DeleteOutlined />
+                                  </Button>
+                                </>
+                              ) : null}
+                            </div>
                           </div>
-                        </div>
-                      )
-                    )}
-                  </Card>
-                </Col>
-              ))}
-            </Row>
+                        )
+                      )}
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            </div>
           </>
         ) : (
           <Loader />
