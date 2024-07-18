@@ -3144,3 +3144,8 @@ section.ant-layout.ant-layout-has-sider.layout-dashboard.layout-profile
   color: #8c8c8c;
   padding: 5px 0px;
 }
+
+.ant-card-head-title {
+  font-weight: bold;
+  font-size: 20px;
+}

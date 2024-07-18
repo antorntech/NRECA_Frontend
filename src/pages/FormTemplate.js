@@ -175,7 +175,7 @@ const FormTemplate = () => {
           <>
             <Row gutter={16}>
               {matchedFormCategories.map((category) => (
-                <Col span={8} key={category.formCategory}>
+                <Col span={16} key={category.formCategory}>
                   <Card
                     title={category.formCategory}
                     bordered={false}
@@ -192,7 +192,13 @@ const FormTemplate = () => {
                             marginBottom: "10px",
                           }}
                         >
-                          <div style={{ display: "flex", gap: "5px" }}>
+                          <div
+                            style={{
+                              display: "flex",
+                              gap: "5px",
+                              marginLeft: "50px",
+                            }}
+                          >
                             <img src={checkMarkIcon} alt="checkMarkIcon.png" />
                             <p
                               style={{
