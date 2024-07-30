@@ -1,6 +1,8 @@
-import { Button, Menu } from "antd";
+import { Menu } from "antd";
 import { NavLink, useLocation } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
+
+const { SubMenu } = Menu;
 
 function Sidenav({ color }) {
   const { pathname } = useLocation();
@@ -55,7 +57,8 @@ function Sidenav({ color }) {
           src={logo}
           alt="logo"
           style={{
-            height: "70px",
+            margin: "10px",
+            height: "50px",
           }}
         />
       </div>
@@ -93,7 +96,7 @@ function Sidenav({ color }) {
               <span className="label">Employee Records</span>
             </NavLink>
           </Menu.Item>
-          <Menu.Item key="documentscv">
+          {/* <Menu.Item key="documentscv">
             <NavLink to="/documentscv">
               <span
                 className="icon"
@@ -105,7 +108,47 @@ function Sidenav({ color }) {
               </span>
               <span className="label">Documents & CV's</span>
             </NavLink>
-          </Menu.Item>
+          </Menu.Item> */}
+          <SubMenu
+            key="documentscv"
+            title={
+              <span>
+                <span
+                  className="icon"
+                  style={{
+                    background: page === "documentscv" ? color : "",
+                  }}
+                >
+                  {profile}
+                </span>
+                <span className="label" id="documentscv">
+                  Documents & CV's
+                </span>
+              </span>
+            }
+          >
+            <Menu.Item key="doc-cv">
+              <NavLink to="/documentscv/doc-cv">
+                <span className="label" style={{ marginLeft: "40px" }}>
+                  Doc & CV
+                </span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key="company-policy">
+              <NavLink to="/documentscv/company-policy">
+                <span className="label" style={{ marginLeft: "40px" }}>
+                  Company Policy
+                </span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key="training-materials">
+              <NavLink to="/documentscv/training-materials">
+                <span className="label" style={{ marginLeft: "40px" }}>
+                  Training Materials
+                </span>
+              </NavLink>
+            </Menu.Item>
+          </SubMenu>
           <Menu.Item key="formtemplate">
             <NavLink to="/formtemplate">
               <span
@@ -335,7 +378,7 @@ function Sidenav({ color }) {
           </Menu.Item>
         </Menu>
       )}
-      <div className="aside-footer">
+      {/* <div className="aside-footer">
         <div
           className="footer-box"
           style={{
@@ -351,7 +394,7 @@ function Sidenav({ color }) {
             DOCUMENTATION
           </Button>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

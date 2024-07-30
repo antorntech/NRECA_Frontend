@@ -729,6 +729,21 @@ ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light.left-nav
   text-overflow: ellipsis;
 }
 
+.ant-menu-submenu-title {
+  height: 50px !important;
+  line-height: 50px !important;
+  padding-left: 15px !important;
+}
+
+.ant-menu-submenu-title:hover,
+.ant-menu-submenu-arrow {
+  color: #000 !important;
+}
+
+#documentscv {
+  color: #000 !important;
+}
+
 ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light.left-nav li::after {
   display: none;
 }

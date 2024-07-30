@@ -289,7 +289,7 @@ const AddDocumentsCV = () => {
                 </Form.Item>
               </Col>
               <Col xs={24} md={8} lg={8}>
-                <Form.Item name="cvDoc" label="Upload Employee Photo">
+                <Form.Item name="cvDoc" label="Upload Photo">
                   <Upload {...cvDocFileProps}>
                     <Button icon={<UploadOutlined />}>Select File</Button>
                   </Upload>

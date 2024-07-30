@@ -32,6 +32,12 @@ import PhotoGallery from "./pages/PhotoGallery";
 import Addministration from "./pages/Addministration";
 import WorldMap from "./pages/WorldMap";
 import NoticeBoard from "./pages/NoticeBoard";
+import CompanyPolicy from "./pages/CompanyPolicy";
+import AddCompanyPolicy from "./pages/AddCompanyPolicy";
+import EditCompanyPolicy from "./pages/EditCompanyPolicy";
+import TrainingMaterials from "./pages/TrainingMaterials";
+import AddTrainingMaterial from "./pages/AddTrainingMaterial";
+import EditTrainingMaterial from "./pages/EditTrainingMaterial";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("token"));
@@ -48,12 +54,42 @@ function App() {
               path="/edit_employee/:id"
               component={EditEmployeeDetails}
             />
-            <Route exact path="/documentscv" component={DocumentsCV} />
+            <Route exact path="/documentscv/doc-cv" component={DocumentsCV} />
             <Route exact path="/add_documentscv" component={AddDocumentsCV} />
             <Route
               exact
               path="/edit_documentscv/:id"
               component={EditDocumentsCV}
+            />
+            <Route
+              exact
+              path="/documentscv/company-policy"
+              component={CompanyPolicy}
+            />
+            <Route
+              exact
+              path="/add_companypolicy"
+              component={AddCompanyPolicy}
+            />
+            <Route
+              exact
+              path="/edit_companypolicy/:id"
+              component={EditCompanyPolicy}
+            />
+            <Route
+              exact
+              path="/documentscv/training-materials"
+              component={TrainingMaterials}
+            />
+            <Route
+              exact
+              path="/add_trainingmaterial"
+              component={AddTrainingMaterial}
+            />
+            <Route
+              exact
+              path="/edit_trainingmaterial/:id"
+              component={EditTrainingMaterial}
             />
             <Route exact path="/formtemplate" component={FormTemplate} />
             <Route exact path="/add_formtemplate" component={AddFormTemplate} />
