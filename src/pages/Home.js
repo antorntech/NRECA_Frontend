@@ -6,6 +6,7 @@ function Home() {
   const [employees, setEmployees] = useState([]);
   const [documentscv, setDocumentsCV] = useState([]);
   const [formtemplate, setFormTemplate] = useState([]);
+  const [notices, setNotices] = useState([]);
   const [leaves, setLeaves] = useState([]);
 
   const { Title } = Typography;
@@ -124,8 +125,8 @@ function Home() {
       bnb: "bnb2",
     },
     {
-      today: "Total Leaves",
-      title: `${leaves && leaves.length > 0 ? leaves.length : 0}`,
+      today: "Total Notice",
+      title: `${notices && notices.length > 0 ? notices.length : 0}`,
       icon: profile,
       bnb: "bnb2",
     },
