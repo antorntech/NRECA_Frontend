@@ -130,7 +130,7 @@ function Sidenav({ color }) {
             <Menu.Item key="doc-cv">
               <NavLink to="/documentscv/doc-cv">
                 <span className="label" style={{ marginLeft: "40px" }}>
-                  Doc & CV
+                  Resume
                 </span>
               </NavLink>
             </Menu.Item>
