@@ -91,7 +91,7 @@ const AddDocumentsCV = () => {
           // Reset form
           setCvDocFileList([]);
           message.success("Document CV created successfully!");
-          navigate.push("/documentscv");
+          navigate.push("/documentscv/doc-cv");
         } else {
           message.error("Upload Failed");
         }
@@ -279,11 +279,14 @@ const AddDocumentsCV = () => {
                   ]}
                 >
                   <Select>
-                    <Option value="Other Resources CV's">
-                      Other Resources CV's
+                    <Option value="International CV's">
+                      International CV's
                     </Option>
                     <Option value="NRECA Employee CV's">
                       NRECA Employee CV's
+                    </Option>
+                    <Option value="Other Resources CV's">
+                      Other Resources CV's
                     </Option>
                   </Select>
                 </Form.Item>

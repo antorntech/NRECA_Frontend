@@ -122,7 +122,7 @@ const EditDocumentsCV = () => {
           // Reset form
           setCvDocFileList([]);
           message.success("Document CV updated successfully!");
-          navigate.push("/documentscv");
+          navigate.push("/documentscv/doc-cv");
         } else {
           message.error("Upload Failed");
         }

@@ -1,4 +1,4 @@
-import { Space, Table, Button, Modal, Input } from "antd";
+import { Space, Table, Button, Modal, Input, Dropdown } from "antd";
 import {
   PlusOutlined,
   EditOutlined,
@@ -23,7 +23,8 @@ const DocumentsCV = () => {
   const [loading, setLoading] = useState(false); // State to manage loading state
   const role = JSON.parse(localStorage.getItem("account")).role;
 
-  const getDocumentsCV = async () => {
+  const getDocumentsCV = async (selectedCVType) => {
+    console.log(selectedCVType);
     setLoading(true); // Set loading state to true
     const token = JSON.parse(localStorage.getItem("token"));
     try {
@@ -36,7 +37,14 @@ const DocumentsCV = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          setDocumentsCV(data); // Update employee state with fetched data
+          if (selectedCVType) {
+            const filteredData = data.filter(
+              (item) => item.cvType === selectedCVType
+            );
+            setDocumentsCV(filteredData); // Update employee state with fetched data
+          } else {
+            setDocumentsCV(data);
+          }
           setLoading(false); // Set loading state to false after data is fetched
         });
     } catch (error) {
@@ -215,6 +223,32 @@ const DocumentsCV = () => {
             </p>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <Dropdown
+              menu={{
+                items: [
+                  {
+                    key: "1",
+                    label: <p>International CV's</p>,
+                    onClick: () => getDocumentsCV("International CV's"),
+                  },
+                  {
+                    key: "2",
+                    label: <p>NRECA Employee CV's</p>,
+                    onClick: () => getDocumentsCV("NRECA Employee CV's"),
+                  },
+                  {
+                    key: "3",
+                    label: <p>Other Resources CV's</p>,
+                    onClick: () => getDocumentsCV("Other Resources CV's"),
+                  },
+                ],
+              }}
+              placement="bottomLeft"
+            >
+              <Button className="primary-btn dropdownBtn">
+                Select CV / Resume
+              </Button>
+            </Dropdown>
             <Button
               onClick={() => getDocumentsCV()}
               className="primary-btn"

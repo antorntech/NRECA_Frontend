@@ -3164,3 +3164,24 @@ section.ant-layout.ant-layout-has-sider.layout-dashboard.layout-profile
   font-weight: bold;
   font-size: 20px;
 }
+
+/* dropdown menu label style */
+.dropdownBtn {
+  color: #fff;
+}
+
+.dropdownBtn:hover,
+.dropdownBtn:focus,
+.dropdownBtn:active {
+  color: #fff;
+}
+
+.ant-dropdown-menu-item {
+  padding-top: 15px;
+  transition: all 0.3s ease;
+}
+
+.ant-dropdown-menu-item:hover {
+  background-color: #017a44;
+  color: #fff;
+}
