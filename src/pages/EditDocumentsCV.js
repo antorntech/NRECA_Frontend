@@ -297,11 +297,14 @@ const EditDocumentsCV = () => {
                   ]}
                 >
                   <Select>
-                    <Option value="Other Resources CV's">
-                      Other Resources CV's
+                    <Option value="International CV's">
+                      International CV's
                     </Option>
                     <Option value="NRECA Employee CV's">
                       NRECA Employee CV's
+                    </Option>
+                    <Option value="Other Resources CV's">
+                      Other Resources CV's
                     </Option>
                   </Select>
                 </Form.Item>
